@@ -3,10 +3,16 @@ class Entry {
   final String title;
   final int pageNo;
 
-  Entry(this.number, this.title, this.pageNo);
+  const Entry(this.number, this.title, this.pageNo);
 }
 
-List<Entry> entries = [
+const titles = ['The Patents Act, 1970', 'The Patents Rules, 2003'];
+const pdfs = ['first.pdf', 'second.pdf'];
+const offsets = [0, 1];
+
+const List<List<Entry>> entries = [entries1, entries2];
+
+const List<Entry> entries1 = [
   Entry('1', 'Short title, extent and commencement', 4),
   Entry('2', 'Definitions and interpretation', 4),
   Entry('3', 'What are not inventions', 8),
@@ -284,4 +290,189 @@ List<Entry> entries = [
       'Repeal of Act 2 of 1911 in so far as it relates to patents and savings',
       106),
   Entry('163', 'Amendment of Act 43 of 1958', 106),
+];
+
+const List<Entry> entries2 = [
+  Entry('1', 'Short title and commencement', 3),
+  Entry('2', 'Prescribed particulars', 3),
+  Entry('3', 'What are not inventions', 5),
+  Entry('4', 'Appropriate office', 5),
+  Entry('5', 'Every person', 5),
+  Entry('6', 'Leaving and serving documents', 7),
+  Entry('7', 'Fees', 7),
+  Entry('8', 'Forms', 8),
+  Entry('9', 'Filing of documents and copies, etc', 9),
+  Entry(
+      '10',
+      'Period within which proof of the right under section 7(2) to make the application shall be furnished',
+      10),
+  Entry('11', 'Order of recording applications', 10),
+  Entry('12', 'Statement and undertaking regarding foreign applications', 10),
+  Entry('13', 'Specifications', 11),
+  Entry('14', 'Amendments to Specifications', 12),
+  Entry('15', 'Drawings', 12),
+  Entry('16', 'Models', 13),
+  Entry('17', 'Definitions', 14),
+  Entry('18', ' Appropriate office in relation to international applications',
+      14),
+  Entry(
+      '19',
+      'International applications filed with appropriate office as receiving office',
+      14),
+  Entry(
+      '20',
+      'International applications designating or designating and electing India',
+      20),
+  Entry('21', 'Filing of priority document', 21),
+  Entry('22', 'Effect of non-compliance with certain requirements', 21),
+  Entry(
+      '23',
+      ' The requirements under this Chapter to be supplemental of the regulations, etc.,under the Treaty',
+      21),
+  Entry('24', 'Publication of application', 22),
+  Entry('25', 'Identification of published applications', 25),
+  Entry(
+      '26', 'A request for withdrawing the application under sub-section', 25),
+  Entry('27', 'Inspection and supply of published documents', 25),
+  Entry('28', 'Procedure in case of anticipation by prior publication', 25),
+  Entry('29', 'Procedure in case of anticipation by prior claiming', 26),
+  Entry('30', 'Amendment of the complete specification in case of anticipation',
+      26),
+  Entry('31', 'Form of reference to another specification', 26),
+  Entry('32', 'Procedure in case of potential infringement', 27),
+  Entry('33', 'Form of reference to another patent', 27),
+  Entry('34', 'Manner in which a claim under section 20(1) shall be made', 27),
+  Entry('35', 'Manner in which a request may be made under section 20(4)', 27),
+  Entry('36', 'Manner of application under section 20(5)', 27),
+  Entry('37', 'Numbering of applicant ions on the grant of patent', 27),
+  Entry('55', 'Opposition to the patent', 28),
+  Entry('56', 'Constitution of Opposition Board and its proceeding', 29),
+  Entry('57', 'Filing of written statement of opposition and evidence', 29),
+  Entry('58', 'Filing of reply statement and evidence', 29),
+  Entry('59', 'Filing of reply evidence by opponent', 29),
+  Entry(
+      '60', 'Further evidence to be left with the leave of the Controller', 29),
+  Entry('61', 'Copies of documents to be supplied', 30),
+  Entry('62', 'Hearing', 30),
+  Entry('63', 'Determination of costs', 30),
+  Entry('66', 'Form of making a request under section 28(2)', 30),
+  Entry('67', 'Form of making a claim under section 28(3)', 31),
+  Entry('68', 'Form of application to be made under section 28(7)', 31),
+  Entry(
+      '69',
+      'Procedure for the hearing of claim or an application under section 28',
+      31),
+  Entry('70', 'Mention of inventor', 31),
+  Entry(
+      '71',
+      'Permission for making patent application outside India under section 39',
+      32),
+  Entry('72', 'Communication of result of reconsideration under section 36(2)',
+      32),
+  Entry('74', 'Form of patent', 33),
+  Entry('75', 'Amendment of patent under section 44', 33),
+  Entry('76', 'Manner of applying for direction under section 51(1)', 33),
+  Entry('77', 'Manner of application under section 51(2)', 33),
+  Entry('78', 'Procedure for the hearing of proceedings under section 51', 33),
+  Entry('79', 'Request under section 52(2)', 34),
+  Entry('80', 'Renewal fees under section 53', 34),
+  Entry(
+      '81',
+      'Amendment of application, specification or any document relating thereto',
+      35),
+  Entry('82', 'Preparation of amended specifications, etc', 35),
+  Entry('83', 'Publication of the amendment allowed', 35),
+  Entry('84', 'Restoration of patents', 36),
+  Entry('85', 'Opposition to restoration under section 61', 36),
+  Entry('86', ' Payment of unpaid renewal fees', 36),
+  Entry('87', 'Surrender of Patents', 37),
+  Entry('88', 'Register of patents under section 67', 38),
+  Entry('90', 'Registration of title and interest in patents', 38),
+  Entry('91', 'Presentation of assignment, etc., of patent to Controller', 38),
+  Entry('92', 'Registration of title or interest in a patent', 38),
+  Entry('93', 'Entry of Renewal fee', 39),
+  Entry('94', 'Alteration of address', 39),
+  Entry(
+      '95',
+      'Inspection of register of patents under section 72 and fees payable therefor',
+      39),
+  Entry('96', 'Application for compulsory licence etc', 40),
+  Entry('97', 'When a prima facie case is not made out', 40),
+  Entry('98', 'Notice of opposition under section 87(2)', 40),
+  Entry('99', 'Manner of publication of the revocation order', 40),
+  Entry('100', 'Application under section 88(4)', 41),
+  Entry(
+      '101',
+      'Procedure to be followed in case of applications under section 88(4)',
+      41),
+  Entry('102',
+      'Application for termination of compulsory licence under section 94', 41),
+  Entry('103', 'Roll of scientific advisers', 43),
+  Entry(
+      '104',
+      'Manner of application for inclusion in the roll of scientific advisers',
+      43),
+  Entry(
+      '105',
+      'Inclusion of the name of any other person in the roll of scientific advisers',
+      43),
+  Entry('106', 'Power to relax', 43),
+  Entry('107', 'Removal of names from the roll of scientific advisers', 44),
+  Entry('108', 'Particulars to be contained in the register of patent agents',
+      45),
+  Entry('109', 'Application for registration of patent agent', 45),
+  Entry(
+      '110', 'Particulars of the qualifying examination for patent agents', 45),
+  Entry('111', 'Registration of patent agents', 46),
+  Entry(
+      '112',
+      'Details to be included in an application for the registration of a patent agent',
+      46),
+  Entry('113', 'Registration of patent agents under section 126 (2)', 46),
+  Entry('114', 'Disqualifications for registration as a patent agent', 46),
+  Entry('115', 'Payment of fees', 46),
+  Entry('116', 'Removal of a name from the register of patent agents', 46),
+  Entry(
+      '117',
+      'Restoration of name of persons removed from the register of patent agents',
+      47),
+  Entry(
+      '118', 'Alteration of names, etc., in the register of patent agents', 47),
+  Entry('119', 'Refusal to recognise as patent agent', 47),
+  Entry(
+      '120',
+      'Publication of the names of patent agents, registered under the Act',
+      48),
+  Entry('121',
+      'Period within which copies of specification etc. are to be filed', 49),
+  Entry('122', 'Correction of clerical errors', 49),
+  Entry('123',
+      'Manner of advertisement of the proposed correction of any error', 49),
+  Entry(
+      '124', 'Manner and time of opposition to the making of corrections', 49),
+  Entry('125', 'Notification of corrections', 49),
+  Entry('126', 'Form, etc., of affidavits', 50),
+  Entry('127', 'Exhibits', 50),
+  Entry('128', 'Directions not otherwise prescribed', 50),
+  Entry('129', 'Exercise of discretionary power by the Controller', 50),
+  Entry(
+      '130',
+      'Application for review of decisions or setting aside of orders of the Controller',
+      51),
+  Entry(
+      '131',
+      'Form and manner in which statements required under section 146(2) to be furnished',
+      51),
+  Entry('132', 'Form of application for the issue of a duplicate patent', 51),
+  Entry(
+      '133',
+      'Supply of certified copies and certificates under sections 72 and 147',
+      52),
+  Entry('134', 'Request for information under section 153', 52),
+  Entry('135', 'Agency', 52),
+  Entry('136', 'Scale of costs', 53),
+  Entry('137', 'Powers of Controller generally', 53),
+  Entry('138', 'Power to extend time prescribed', 53),
+  Entry('139', 'Hearing before the Controller to be in public in certain cases',
+      53),
 ];

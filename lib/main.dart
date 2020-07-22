@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
-import 'entries.dart';
+import 'entries.dart' as Data;
 
 void main() => runApp(MyApp());
 
@@ -16,12 +16,56 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Patent',
       debugShowCheckedModeBanner: false,
-      home: PdfPage(),
+      home: PdfList(),
+    );
+  }
+}
+
+class PdfList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Documents'),
+      ),
+      body: Container(
+        child: ListView.separated(
+          separatorBuilder: (context, _) => Divider(),
+          itemBuilder: (context, index) => ListTile(
+            title: Text(Data.titles[index]),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => PdfPage(
+                    entries: Data.entries[index],
+                    pdfFile: Data.pdfs[index],
+                    offset: Data.offsets[index],
+                    title: Data.titles[index],
+                  ),
+                ),
+              );
+            },
+          ),
+          itemCount: Data.titles.length,
+        ),
+      ),
     );
   }
 }
 
 class PdfPage extends StatefulWidget {
+  final List<Data.Entry> entries;
+  final String pdfFile;
+  final int offset;
+  final String title;
+
+  const PdfPage({
+    Key key,
+    this.entries,
+    this.pdfFile,
+    this.offset,
+    this.title,
+  }) : super(key: key);
   @override
   _PdfPageState createState() => _PdfPageState();
 }
@@ -39,7 +83,7 @@ class _PdfPageState extends State<PdfPage> {
 
   void _load() async {
     try {
-      document = await PDFDocument.fromAsset('assets/app.pdf');
+      document = await PDFDocument.fromAsset('assets/${widget.pdfFile}');
       setState(() {});
     } catch (e) {
       print(e);
@@ -50,7 +94,7 @@ class _PdfPageState extends State<PdfPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Patent'),
+        title: Text(widget.title),
         actions: <Widget>[
           FlatButton(
             child: Text(
@@ -60,7 +104,7 @@ class _PdfPageState extends State<PdfPage> {
             onPressed: () async {
               final value = await showDialog(
                   context: context, builder: (context) => AskPage());
-              pageController.jumpToPage(value);
+              pageController.jumpToPage(value + widget.offset);
             },
           ),
         ],
@@ -82,9 +126,11 @@ class _PdfPageState extends State<PdfPage> {
       floatingActionButton: FloatingActionButton(
         child: Text('Index'),
         onPressed: () async {
-          final value = await Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => IndexPage()));
-          pageController.jumpToPage(value);
+          final value = await Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => IndexPage(
+                    entries: widget.entries,
+                  )));
+          pageController.jumpToPage(value + widget.offset);
         },
       ),
     );
@@ -115,6 +161,9 @@ class AskPage extends StatelessWidget {
 }
 
 class IndexPage extends StatelessWidget {
+  final List<Data.Entry> entries;
+
+  const IndexPage({Key key, this.entries}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,4 +189,3 @@ class IndexPage extends StatelessWidget {
     );
   }
 }
-
