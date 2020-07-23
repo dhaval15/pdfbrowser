@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
 import 'entries.dart' as Data;
+import 'welcome_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,7 +17,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Patent',
       debugShowCheckedModeBanner: false,
-      home: PdfList(),
+      home: WelcomeScreen(),
+      theme: ThemeData(
+        primaryColor: Color(0xFFF38270),
+        floatingActionButtonTheme:
+            FloatingActionButtonThemeData(backgroundColor: Color(0xFFF38270)),
+        appBarTheme: AppBarTheme(iconTheme: IconThemeData(color: Colors.white)),
+      ),
     );
   }
 }
@@ -26,27 +33,68 @@ class PdfList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Documents'),
+        title: Text(
+          'Indian Patent Act',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: Container(
-        child: ListView.separated(
-          separatorBuilder: (context, _) => Divider(),
-          itemBuilder: (context, index) => ListTile(
-            title: Text(Data.titles[index]),
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) => PdfPage(
-                    entries: Data.entries[index],
-                    pdfFile: Data.pdfs[index],
-                    offset: Data.offsets[index],
-                    title: Data.titles[index],
-                  ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            ListTile(
+              leading: CircleAvatar(
+                child: Text(
+                  '1',
+                  style: Theme.of(context).textTheme.headline6,
                 ),
-              );
-            },
-          ),
-          itemCount: Data.titles.length,
+                backgroundColor: Colors.black.withAlpha(72),
+              ),
+              title: Text(
+                Data.titles[0],
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => PdfPage(
+                      entries: Data.entries[0],
+                      pdfFile: Data.pdfs[0],
+                      offset: Data.offsets[0],
+                      title: Data.titles[0],
+                    ),
+                  ),
+                );
+              },
+            ),
+            Divider(height: 24),
+            ListTile(
+              leading: CircleAvatar(
+                child: Text(
+                  '2',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                backgroundColor: Colors.black.withAlpha(72),
+              ),
+              title: Text(
+                Data.titles[1],
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => PdfPage(
+                      entries: Data.entries[1],
+                      pdfFile: Data.pdfs[1],
+                      offset: Data.offsets[1],
+                      title: Data.titles[1],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
@@ -94,7 +142,10 @@ class _PdfPageState extends State<PdfPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.white),
+        ),
         actions: <Widget>[
           FlatButton(
             child: Text(
@@ -168,7 +219,10 @@ class IndexPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Index'),
+        title: Text(
+          'Index',
+          style: TextStyle(color: Colors.white),
+        ),
         elevation: 0,
       ),
       body: Container(
